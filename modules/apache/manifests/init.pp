@@ -21,5 +21,5 @@ class apache {
   service { 'httpd':
     ensure    => running,
     susbscibe => File ['/etc/httpd/conf/httpd.conf'] ,
-  }
+ }
 }
