@@ -1,19 +1,38 @@
 class apache {
+  case $::osfamily {
+    'RedHat': {
+      $httpd_user = 'apache'
+      $httpd_group ='apache'
+      $httpd_pkg   ='httpd'
+      $httpd_svc   ='httpd'
+      $httpd_conf  ='/etc/httpd/conf/httpd.conf'
+    }
+    'Debian': { 
+     $httpd_user = 'www-data'
+     $httpd_group= 'www-data'
+     $httpd_pkg  = 'apache2'
+     $httpd_svc  = 'apache2'
+     $httpd_conf = '/etc/apache2/conf/httpd.conf'
+    }
+    default : {
+      fail("Module ${module_name}is not supported on ${::osfamily}")
+    }
+  }
   File {
-   owner => 'apache',
-   group => 'apache',
+   owner => '$httpd_user',
+   group => '$httpd_group',
    mode  => '0644',
   }
-  package { 'httpd':
+  package { '$httpd_pkg':
         ensure => present,
   }
-  file { '/etc/httpd/conf/httpd.conf':
+  file { 'httpd.conf':
     ensure    => file ,
       source  => 'puppet:///modules/apache/httpd.conf',
       owner   => 'root',
       group   => 'root',
       mode    => '0644',
-      require => Package['httpd'],
+      require => Package['$httpd_pkg'],
   }
   file { '/var/www':
     ensure => directory,
@@ -25,9 +44,9 @@ class apache {
     ensure => file ,
     source => 'puppet:///modules/apache/index.html',
   }
-  service { 'httpd':
+  service { '$httpd_svc':
     ensure    => running,
-    subscribe => File ['/etc/httpd/conf/httpd.conf'] ,
+    subscribe => File ['$httpd_conf'] ,
  }
 }
 
