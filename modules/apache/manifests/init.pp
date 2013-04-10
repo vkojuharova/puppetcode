@@ -19,20 +19,20 @@ class apache {
     }
   }
   File {
-   owner => '$httpd_user',
-   group => '$httpd_group',
+   owner => $httpd_user,
+   group => $httpd_group,
    mode  => '0644',
   }
-  package { '$httpd_pkg':
+  package { $httpd_pkg:
         ensure => present,
   }
-  file { 'httpd.conf':
+  file { $httpd_conf:
     ensure    => file ,
       source  => 'puppet:///modules/apache/httpd.conf',
       owner   => 'root',
       group   => 'root',
       mode    => '0644',
-      require => Package['$httpd_pkg'],
+      require => Package[$httpd_pkg],
   }
   file { '/var/www':
     ensure => directory,
@@ -44,9 +44,9 @@ class apache {
     ensure => file ,
     source => 'puppet:///modules/apache/index.html',
   }
-  service { '$httpd_svc':
+  service { $httpd_svc:
     ensure    => running,
-    subscribe => File ['$httpd_conf'] ,
+    subscribe => File [$httpd_conf] ,
  }
 }
 
