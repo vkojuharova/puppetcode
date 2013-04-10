@@ -5,8 +5,9 @@ class apache {
   file { '/etc/httpd/conf/httpd.conf':
     ensure    => file ,
       source  => 'puppet:///modules/apache/httpd.conf',
-      owner   => 'root',
-      group   => 'root',
+      owner   => 'apache',
+      group   => 'apache',
+      mode    => '0644',
       require => Package['httpd'],
   }
   file { '/var/www':
