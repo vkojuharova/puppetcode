@@ -2,7 +2,7 @@ class apache {
   package { 'httpd':
     ensure => present,
   }
-  file { '/etc/https/conf/httpd.conf':
+  file { '/etc/httpd/conf/httpd.conf':
     ensure    => file ,
       source  => 'puppet:///modules/apache/httpd.conf',
       owner   => 'root',
