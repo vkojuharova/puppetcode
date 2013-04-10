@@ -4,11 +4,10 @@ class apache {
   }
   file { '/etc/https/conf/httpd.conf':
     ensure    => file ,
+      source  => 'puppet:///modules/apache/httpd.conf',
       owner   => 'root',
       group   => 'root',
       require => Package['httpd'],
-      source  => 'puppet:///modules/apache/httpd.conf',
-
   }
   file { '/var/www':
     ensure => directory,
