@@ -20,6 +20,7 @@ class apache {
   }
   service { 'httpd':
     ensure    => running,
+    source    => 'puppet:///modules/apache/httpd.conf',
     subscribe => File ['/etc/httpd/conf/httpd.conf'] ,
  }
 }
