@@ -7,6 +7,8 @@ class apache {
       owner   => 'root',
       group   => 'root',
       require => Package['httpd'],
+      source  => 'puppet:///modules/apache/httpd.conf',
+
   }
   file { '/var/www':
     ensure => directory,
@@ -20,7 +22,6 @@ class apache {
   }
   service { 'httpd':
     ensure    => running,
-    source    => 'puppet:///modules/apache/httpd.conf',
     subscribe => File ['/etc/httpd/conf/httpd.conf'] ,
  }
 }
