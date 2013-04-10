@@ -1,12 +1,17 @@
 class apache {
+  File {
+   owner => 'apache',
+   group => 'apache',
+   mode  => '0644',
+  }
   package { 'httpd':
-    ensure => present,
+        ensure => present,
   }
   file { '/etc/httpd/conf/httpd.conf':
     ensure    => file ,
       source  => 'puppet:///modules/apache/httpd.conf',
-      owner   => 'apache',
-      group   => 'apache',
+      owner   => 'root',
+      group   => 'root',
       mode    => '0644',
       require => Package['httpd'],
   }
@@ -25,3 +30,4 @@ class apache {
     subscribe => File ['/etc/httpd/conf/httpd.conf'] ,
  }
 }
+
