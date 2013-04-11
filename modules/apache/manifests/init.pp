@@ -42,7 +42,7 @@ class apache {
   }
   file { '/var/www/html/index.html':
     ensure => file ,
-    source => 'puppet:///modules/apache/index.html',
+    content =>template('apache/index.html.erb'),
   }
   service { $httpd_svc:
     ensure    => running,
