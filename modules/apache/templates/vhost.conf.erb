@@ -1,0 +1,15 @@
+ <VirtualHost <%= @vhost_name %>:80>
+ ServerName <%= @servername %>
+ DocumentRoot <%= @docroot %>
+ <Directory <%= @docroot %>>
+ Options <%= @options %>
+ </Directory>
+ AllowOverride None
+ Order allow,deny
+ allow from all
+ </Directory>
+ ErrorLog <%= @logdir %>/<%= @name %>_error.log
+ LogLevel warn
+ CustomLog <%= @logdir %>/<%= @name %>_access.log combined
+ ServerSignature Off
+ </VirtualHost>

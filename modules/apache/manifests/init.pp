@@ -6,6 +6,7 @@ class apache {
       $httpd_pkg   ='httpd'
       $httpd_svc   ='httpd'
       $httpd_conf  ='/etc/httpd/conf/httpd.conf'
+      $httpd_conf_dot_d  ='/etc/httpd/conf.d'
     }
     'Debian': { 
      $httpd_user = 'www-data'
@@ -13,6 +14,7 @@ class apache {
      $httpd_pkg  = 'apache2'
      $httpd_svc  = 'apache2'
      $httpd_conf = '/etc/apache2/conf/httpd.conf'
+     $httpd_conf = '/etc/apache2/conf.d'
     }
     default : {
       fail("Module ${module_name}is not supported on ${::osfamily}")
