@@ -2,7 +2,6 @@ class tomcat {
 
   $tomcat_port = 8080
   $tomcat_password = 'badwolf' 
-  $tomcat_setenv  ='/etc/tomcat6/bin/setenv.sh'
 
   notice("Establishing http://$hostname:$tomcat_port/")
 
@@ -36,7 +35,7 @@ class tomcat {
   }
 
 ######### add setenv.sh ############
-#file { $tomcat_setenv:
+#file { '/etc/tomcat6/bin/setenv.sh':
 #    source  => 'puppet:///modules/tomcat/setenv.sh',
 #    owner   => 'root',
 #    require => Package['tomcat6'],
