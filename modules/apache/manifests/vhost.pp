@@ -1,11 +1,11 @@
 define apache::vhost (
       $docroot,
-      $port       = '80',
+      $port       = '8080',
       $priority   = '10',
       $options    = 'Indexes MultiViews',
       $vhost_name = $name,
       $servername = $name,
-      $logdir     = '/var/log/httpd',
+      $logdir     = '/var/log/httpd1',
  ) {
   if ! defined (Class['apache']) {
     fail('you must include the apache class',

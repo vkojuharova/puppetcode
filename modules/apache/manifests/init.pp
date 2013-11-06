@@ -20,6 +20,13 @@ class apache {
       fail("Module ${module_name}is not supported on ${::osfamily}")
     }
   }
+
+  $auth_cas_apache_port=8005
+  $apache_httpd_log_level = debug
+  $apache_httpd_doc_root=/usr/www/html
+  $apache_error_log=logs/error_log
+  $apache_www_home=/var/www
+
   File {
    owner => $httpd_user,
    group => $httpd_group,
