@@ -7,11 +7,12 @@ define apache::mod_auth_cas {
       group   => 'root',
   }
 
-  file { '/etc/httpd/certs':
+  file { '/etc/httpd/certs/aws.cer':
         ensure    => file ,
         owner   => 'root',
         group   => 'root',
         mode    => '0644',
     }
+
 
 }
