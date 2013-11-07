@@ -1,11 +1,11 @@
-Listen webdev1ox.iam.huit.harvard.edu:8105
+Listen *:<%=auth_cas_apache_port %>
 
-<VirtualHost webdev1ox.iam.huit.harvard.edu:8105>
-  ServerName webdev1ox.iam.huit.harvard.edu
+<VirtualHost *:<%=auth_cas_apache_port %>>
+  ServerName <%= name %>
   ServerAdmin vanja_kojuharova@harvard.edu
 
-  CustomLog /u01/apachetomcat/integration-test-instance/httpd/logs/castest_access_log.log combined
-  ErrorLog /u01/apachetomcat/integration-test-instance/httpd/logs/castest_error_log.log
+  CustomLog <%=apache_error_log%>/castest_access_log.log combined
+  ErrorLog <%=apache_error_log%>/castest_error_log.log
 
   ProxyRequests On
   ProxyPreserveHost On
@@ -36,7 +36,7 @@ LoadModule auth_cas_module modules/mod_auth_cas.so
 
 
 CASCookiePath       /mod_auth_cas/
-CASCertificatePath  /u02/app/iam/certs/webdev1ox_iam_huit_harvard_edu_cert.cer
+CASCertificatePath  <%= apache_cert_dir%>/aws.cer
 
 CASLoginURL         https://stage.pin1.harvard.edu/cas/login
 CASValidateURL      https://stage.pin1.harvard.edu/cas/samlValidate
@@ -70,12 +70,9 @@ require valid-user
 CASAuthNHeader CAS_USER
 </Location>
 
-ProxyPass       /castest ajp://$name:8003/castest
+ProxyPass       /castest ajp://<%= name %>:8003/castest
 
 </VirtualHost>
 
-#RewriteEngine On
-#RewriteRule ^/cas(.) https://${SERVER_NAME}:8016/castest$1 [PT]
-#RewriteRule ^/castest(.*) https://$SERVER_NAME}:8105/castest$1 [PT]
 
 
