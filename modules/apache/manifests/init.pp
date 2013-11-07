@@ -1,10 +1,12 @@
 class apache {
   include apache::install, apache::service
+
+    notice("Establishing http://$name:80")
 }
 
-define apache::install {
 
-  include apache
-  notice("Establishing http://$name:80")
-}
+
+
+
+
 
