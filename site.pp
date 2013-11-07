@@ -5,5 +5,7 @@ node default {
    }
 
    # repeat as desired for different servlets ...
+   apache::install {
 
+   }
 }
