@@ -23,9 +23,9 @@ class apache {
 
   $auth_cas_apache_port=8005
   $apache_httpd_log_level = debug
-  $apache_httpd_doc_root=/usr/www/html
-  $apache_error_log=logs/error_log
-  $apache_www_home=/var/www
+  $apache_httpd_doc_root='/usr/www/html'
+  $apache_error_log='logs/error_log'
+  $apache_www_home='/var/www'
 
   File {
    owner => $httpd_user,

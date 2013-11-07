@@ -1,0 +1,81 @@
+Listen webdev1ox.iam.huit.harvard.edu:8105
+
+<VirtualHost webdev1ox.iam.huit.harvard.edu:8105>
+  ServerName webdev1ox.iam.huit.harvard.edu
+  ServerAdmin vanja_kojuharova@harvard.edu
+
+  CustomLog /u01/apachetomcat/integration-test-instance/httpd/logs/castest_access_log.log combined
+  ErrorLog /u01/apachetomcat/integration-test-instance/httpd/logs/castest_error_log.log
+
+  ProxyRequests On
+  ProxyPreserveHost On
+
+  <Proxy *>
+        Order deny,allow
+        Allow from all
+  </Proxy>
+
+  ProxyPassMatch ^\/default.asp !
+  ProxyPassMatch ^\/faq.asp !
+  ProxyPassMatch ^\/pin/logout.asp(.*) !
+  ProxyPassMatch ^\/pin/default.asp(.*) !
+  ProxyPassMatch /index.html !
+
+  SSLEngine on
+  SSLCipherSuite ALL:!ADH:!EXP56:RC4+RSA:+HIGH:+MEDIUM:+LOW:+SSLv2:+EXP:+eNULL
+  SSLCertificateFile /u02/app/iam/certs/webdev1ox_iam_huit_harvard_edu_cert.cer
+  SSLCertificateKeyFile /u02/app/iam/certs/webdev1ox.iam.huit.harvard.edu.key
+  SSLCertificateChainFile /u02/app/iam/certs/inbundle.crt
+
+#
+# mod_auth_cas is an Apache 2.0/2.2 compliant module that supports the
+# CASv1 and CASv2 protocols
+#
+
+LoadModule auth_cas_module modules/mod_auth_cas.so
+
+
+CASCookiePath       /mod_auth_cas/
+CASCertificatePath  /u02/app/iam/certs/webdev1ox_iam_huit_harvard_edu_cert.cer
+
+CASLoginURL         https://stage.pin1.harvard.edu/cas/login
+CASValidateURL      https://stage.pin1.harvard.edu/cas/samlValidate
+
+
+CASValidateServer  Off
+CASValidateDepth   9
+CASDebug           On
+#CASSSOEnabled      On
+CASAllowWildcardCert On
+
+# for Rey
+CASCookieHttpOnly  On
+
+# Enable this when new attribute comes
+#CASAuthoritative   On
+
+
+#CASCacheCleanInterval 300
+CASVersion         2
+
+#Invalid command 'CASValidateSAML',
+CASValidateSAML     On
+
+
+<Location /castest>
+AuthType CAS
+require valid-user
+#require cas-attribute authenticationType:PIN
+
+CASAuthNHeader CAS_USER
+</Location>
+
+ProxyPass       /castest ajp://$name:8003/castest
+
+</VirtualHost>
+
+#RewriteEngine On
+#RewriteRule ^/cas(.) https://${SERVER_NAME}:8016/castest$1 [PT]
+#RewriteRule ^/castest(.*) https://$SERVER_NAME}:8105/castest$1 [PT]
+
+
