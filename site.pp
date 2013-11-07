@@ -4,8 +4,5 @@ node default {
       path => '/srv/puppetcode/wars/castest.war'
    }
 
-   # repeat as desired for different servlets ...
-   apache::install {
-
-   }
+include apache
 }
