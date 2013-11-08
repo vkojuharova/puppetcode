@@ -68,6 +68,7 @@ class apache (
     exec { "mkdir ${vhost_dir}":
       creates => $vhost_dir,
       require => Package['httpd'],
+    }
 
     file { $vhost_dir:
       ensure  => directory,
