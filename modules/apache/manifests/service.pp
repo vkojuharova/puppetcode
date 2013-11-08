@@ -7,7 +7,8 @@ class apache::service (
   if ! defined(Class['apache::params']) {
     fail('You must include the apache::params class before using any apache defined resources')
   }
-  validate_bool($service_enable)
+# validate_bool does not exist in 2.6 version
+#  validate_bool($service_enable)
 
   service { 'httpd':
     ensure => $service_ensure,
