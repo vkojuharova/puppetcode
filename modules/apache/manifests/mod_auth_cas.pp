@@ -14,5 +14,18 @@ define apache::mod_auth_cas {
         mode    => '0644',
     }
 
+   class{'apache':
+    default_vhost => false,
+   }
 
+   apache::vhost {
+        port    => '80'
+        docroot => '/var/www/castest',
+   }
+
+   apache::vhost{
+        port    => '443',
+        docroot => '/var/www/castests',
+        ssl     => true,
+   }
 }

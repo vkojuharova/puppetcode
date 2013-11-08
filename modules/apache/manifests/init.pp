@@ -202,7 +202,6 @@ class apache (
         fail("Unsupported osfamily ${::osfamily}")
       }
     }
-  }
 
     $apxs_workaround = $::osfamily ? {
       'freebsd' => true,
@@ -235,17 +234,42 @@ class apache (
 
     # preserve back-wards compatibility to the times when default_mods was
     # only a boolean value. Now it can be an array (too)
-    class { 'apache::default_mods':
+      class { 'apache::default_mods':
         all => $default_mods,
-    }
-
+      }
 #    if $mpm_module {
 #      class { "apache::mod::${mpm_module}": }
 #    }
 
+    $default_vhost_ensure = $default_vhost ? {
+      true  => 'present',
+      false => 'absent'
+    }
+    $default_ssl_vhost_ensure = $default_ssl_vhost ? {
+      true  => 'present',
+      false => 'absent'
+    }
 
-
-#    include apache::install, apache::service
+    apache::vhost { 'default':
+      ensure          => $default_vhost_ensure,
+      port            => 80,
+      docroot         => $docroot,
+      scriptalias     => $scriptalias,
+      serveradmin     => $serveradmin,
+      access_log_file => $access_log_file,
+      priority        => '15',
+    }
+    apache::vhost { 'default-ssl':
+      ensure          => $default_ssl_vhost_ensure,
+      port            => 443,
+      ssl             => true,
+      docroot         => $docroot,
+      scriptalias     => $scriptalias,
+      serveradmin     => $serveradmin,
+      access_log_file => "ssl_${access_log_file}",
+      priority        => '15',
+    }
+  }
 
     notice("Establishing http://$name:80")
 
