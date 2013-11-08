@@ -16,6 +16,7 @@ class apache::params {
     notice("Servername $servername")
     notice("Osfamily $osfamily")
     notice("operatingsystem $operatingsystem")
+    notice("fqdn is $fqdn")
 
     if $::osfamily == 'RedHat' #or $::operatingsystem == 'amazon'
     {
