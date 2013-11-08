@@ -5,4 +5,9 @@ node default {
    }
 
 include apache
+
+#define apache::vhost(
+
+#)
+
 }
