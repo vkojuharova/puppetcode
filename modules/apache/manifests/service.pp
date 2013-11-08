@@ -1,7 +1,7 @@
 class apache::service {
   $service_name   = $apache::params::service_name,
   $service_enable = true,
-  $service_ensure = 'running',
+  $service_ensure = 'running'
 ) {
   # The base class must be included first because parameter defaults depend on it
   if ! defined(Class['apache::params']) {

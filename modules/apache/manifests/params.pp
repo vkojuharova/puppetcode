@@ -10,9 +10,11 @@ class apache::params {
 #    } else {
 #        $servername = $:: hostname
 #    }
-     notice("Hostname $hostname")
-     notice("Servername $servername")
-#    $servername = $hostname
+    $servername = $hostname
+
+    notice("Hostname $hostname")
+    notice("Servername $servername")
+    notice("Osfamily $osfamily")
 
     if $::osfamily == 'RedHat' #or $::operatingsystem == 'amazon'
     {
