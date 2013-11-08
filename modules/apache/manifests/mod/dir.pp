@@ -5,7 +5,8 @@ class apache::mod::dir (
   $dir     = 'public_html',
   $indexes = ['index.html','index.html.var','index.cgi','index.pl','index.php','index.xhtml']
 ) {
-  validate_array($indexes)
+# Does not work with puppet 2.6
+#  validate_array($indexes)
   apache::mod { 'dir': }
 
   # Template uses
