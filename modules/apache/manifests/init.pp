@@ -44,9 +44,10 @@ class apache (
       notify => Class['Apache::Service'],
   }
 
-  if $mpm_module {
-      validate_re($mpm_module, '(prefork|worker|itk|event)')
-  }
+# Dependency.... Unknown function validate_re
+#  if $mpm_module {
+#      validate_re($mpm_module, '(prefork|worker|itk|event)')
+#  }
 # Gives Syntax error
 #  validate_re($sendfile, [ '^[oO]n$' , '^[oO]ff$' ])
   if $manage_user {
