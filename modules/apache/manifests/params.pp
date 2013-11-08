@@ -1,4 +1,4 @@
-class apache :: params {
+class apache::params {
     $osr_array = split ($:: operatingsystemrelease, '[\/\.]')
     $distrelease = $osr_array[0]
     if !$distrelease {
