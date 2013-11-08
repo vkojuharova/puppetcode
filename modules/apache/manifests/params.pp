@@ -17,6 +17,8 @@ class apache::params {
     notice("operatingsystem $operatingsystem")
     notice("fqdn is $fqdn")
 
+    $conf_template        = 'apache/httpd.conf.erb'
+
     if $::osfamily == 'RedHat' or $::operatingsystem == 'amazon'
     {
         $user = 'apache'
