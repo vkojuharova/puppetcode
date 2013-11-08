@@ -5,11 +5,13 @@ class apache::params {
 #    fail (" Class['apache::params']: Unparsable \$::operatingsystemrelease:  $ {:: operatingsystemrelease} ")
 #    }
 
-    if ($:: fqdn) {
-        $servername = $:: fqdn
-    } else {
-        $servername = $:: hostname
-    }
+#    if ($:: fqdn) {
+#        $servername = $:: fqdn
+#    } else {
+#        $servername = $:: hostname
+#    }
+
+    $servername = $hostname
 
     if $:: osfamily == 'RedHat' or $:: operatingsystem == 'amazon' {
         $user = 'apache'
