@@ -113,6 +113,7 @@ class apache (
         fail("Unsupported osfamily ${::osfamily}")
       }
     }
+  }
 
     $apxs_workaround = $::osfamily ? {
       'freebsd' => true,
