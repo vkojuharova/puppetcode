@@ -1,5 +1,6 @@
 class apache (
     $service_name = $apache::params::service_name,
+    $default_mods         = true,
     $default_ssl_vhost    = false,
     $default_ssl_cert     = $apache::params::default_ssl_cert,
     $default_ssl_key      = $apache::params::default_ssl_key,
@@ -149,15 +150,8 @@ class apache (
 
     # preserve back-wards compatibility to the times when default_mods was
     # only a boolean value. Now it can be an array (too)
-    if is_array($default_mods) {
-      class { 'apache::default_mods':
-        all  => false,
-        mods => $default_mods,
-      }
-    } else {
-      class { 'apache::default_mods':
+    class { 'apache::default_mods':
         all => $default_mods,
-      }
     }
 
 #    if $mpm_module {
