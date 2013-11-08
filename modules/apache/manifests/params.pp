@@ -10,7 +10,6 @@ class apache::params {
     } else {
         $servername = $::hostname
     }
-    $servername = $hostname
 
     notice("Hostname $hostname")
     notice("Servername $servername")
