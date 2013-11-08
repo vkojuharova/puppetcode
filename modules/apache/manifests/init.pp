@@ -47,7 +47,8 @@ class apache (
   if $mpm_module {
       validate_re($mpm_module, '(prefork|worker|itk|event)')
   }
-  validate_re($sendfile, [ '^[oO]n$' , '^[oO]ff$' ])
+# Gives Syntax error
+#  validate_re($sendfile, [ '^[oO]n$' , '^[oO]ff$' ])
   if $manage_user {
     user { $user:
       ensure  => present,
