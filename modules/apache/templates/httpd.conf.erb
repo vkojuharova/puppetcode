@@ -234,8 +234,8 @@ LoadModule proxy_ajp_module modules/mod_proxy_ajp.so
 #  when the value of (unsigned)Group is above 60000; 
 #  don't use Group #-1 on these systems!
 #
-User apache
-Group apache
+User <%= @user %>
+Group <%= @group %>
 
 ### Section 2: 'Main' server configuration
 #
@@ -254,7 +254,7 @@ Group apache
 # e-mailed.  This address appears on some server-generated pages, such
 # as error documents.  e.g. admin@your-domain.com
 #
-ServerAdmin root@localhost
+ServerAdmin <%= @serveradmin %>
 
 #
 # ServerName gives the name and port that the server uses to identify itself.
@@ -284,7 +284,7 @@ UseCanonicalName Off
 # documents. By default, all requests are taken from this directory, but
 # symbolic links and aliases may be used to point to other locations.
 #
-DocumentRoot <%=apache_httpd_doc_root%> >
+DocumentRoot <%= @docroot %>
 
 #
 # Each directory to which Apache has access can be configured with respect
@@ -309,7 +309,7 @@ DocumentRoot <%=apache_httpd_doc_root%> >
 #
 # This should be changed to whatever you set DocumentRoot to.
 #
-<Directory <%=apache_httpd_doc_root%> >
+<Directory <%= @docroot %> >
 
 #
 # Possible values for the Options directive are "None", "All",
