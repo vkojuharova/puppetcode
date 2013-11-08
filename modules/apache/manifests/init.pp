@@ -147,6 +147,24 @@ class apache (
       require => Package['httpd'],
     }
 
+    # preserve back-wards compatibility to the times when default_mods was
+    # only a boolean value. Now it can be an array (too)
+    if is_array($default_mods) {
+      class { 'apache::default_mods':
+        all  => false,
+        mods => $default_mods,
+      }
+    } else {
+      class { 'apache::default_mods':
+        all => $default_mods,
+      }
+    }
+
+#    if $mpm_module {
+#      class { "apache::mod::${mpm_module}": }
+#    }
+
+
 
 #    include apache::install, apache::service
 
