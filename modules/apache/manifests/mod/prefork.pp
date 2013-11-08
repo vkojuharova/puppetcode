@@ -47,7 +47,7 @@ class apache::mod::prefork (
         line    => '#HTTPD=/usr/sbin/httpd.worker',
         match   => '#?HTTPD=/usr/sbin/httpd.worker',
         require => Package['httpd'],
-        notify  => Service['httpd'],
+        notify  => Service['httpd']
       }
     }
     'debian': {
