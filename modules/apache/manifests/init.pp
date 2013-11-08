@@ -22,6 +22,7 @@ class apache (
     $vhost_enable_dir     = $apache::params::vhost_enable_dir,
     $mod_dir              = $apache::params::mod_dir,
     $mod_enable_dir       = $apache::params::mod_enable_dir,
+    $mpm_module           = $apache::params::mpm_module,
     $conf_template        = $apache::params::conf_template,
     $servername           = $apache::params::servername,
     $manage_user          = true,
@@ -41,6 +42,25 @@ class apache (
       ensure => $package_ensure,
       name   => $apache::params::apache_name,
       notify => Class['Apache::Service'],
+  }
+
+  if $mpm_module {
+      validate_re($mpm_module, '(prefork|worker|itk|event)')
+  }
+  validate_re($sendfile, [ '^[oO]n$' , '^[oO]ff$' ])
+  if $manage_user {
+    user { $user:
+      ensure  => present,
+      gid     => $group,
+      require => Package['httpd'],
+    }
+  }
+
+  if $manage_group {
+    group { $group:
+      ensure  => present,
+      require => Package['httpd']
+    }
   }
 
   class { 'apache::service':
