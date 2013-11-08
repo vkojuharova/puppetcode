@@ -6,7 +6,7 @@ class apache::mod::peruser (
   $maxrequestsperchild = '1000',
   $idletimeout = '120',
   $expiretimeout = '120',
-  $keepalive = 'Off',
+  $keepalive = 'Off'
 ) {
   if defined(Class['apache::mod::event']) {
     fail('May not include both apache::mod::peruser and apache::mod::event on the same node')

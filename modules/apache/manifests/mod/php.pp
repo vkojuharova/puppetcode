@@ -1,5 +1,5 @@
 class apache::mod::php (
-  $package_ensure = 'present',
+  $package_ensure = 'present'
 ) {
   if ! defined(Class['apache::mod::prefork']) {
     fail('apache::mod::php requires apache::mod::prefork; please enable mpm_module => \'prefork\' on Class[\'apache\']')

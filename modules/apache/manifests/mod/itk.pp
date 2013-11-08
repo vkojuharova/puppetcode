@@ -4,7 +4,7 @@ class apache::mod::itk (
   $maxspareservers     = '20',
   $serverlimit         = '256',
   $maxclients          = '256',
-  $maxrequestsperchild = '4000',
+  $maxrequestsperchild = '4000'
 ) {
   if defined(Class['apache::mod::event']) {
     fail('May not include both apache::mod::itk and apache::mod::event on the same node')

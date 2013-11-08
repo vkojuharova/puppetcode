@@ -1,5 +1,5 @@
 class apache::mod::authnz_ldap(
-  $verifyServerCert = true,
+  $verifyServerCert = true
 ) {
   include apache::mod::ldap
   apache::mod { 'authnz_ldap': }
