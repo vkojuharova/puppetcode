@@ -240,7 +240,6 @@ class apache (
 #    if $mpm_module {
 #      class { "apache::mod::${mpm_module}": }
 #    }
-
     $default_vhost_ensure = $default_vhost ? {
       true  => 'present',
       false => 'absent'
@@ -249,7 +248,6 @@ class apache (
       true  => 'present',
       false => 'absent'
     }
-
     apache::vhost { 'default':
       ensure          => $default_vhost_ensure,
       port            => 80,
