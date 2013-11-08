@@ -8,6 +8,9 @@ class apache (
     $service_ensure       = 'running',
     $purge_configs        = true,
     $serveradmin          = 'root@localhost',
+    $sendfile             = 'On',
+    $error_documents      = false,
+    $timeout              = '120',
     $httpd_dir            = $apache::params::httpd_dir,
     $confd_dir            = $apache::params::confd_dir,
     $vhost_dir            = $apache::params::vhost_dir,
@@ -16,6 +19,8 @@ class apache (
     $servername           = $apache::params::servername,
     $user                 = $apache::params::user,
     $group                = $apache::params::group,
+    $keepalive            = $apache::params::keepalive,
+    $keepalive_timeout    = $apache::params::keepalive_timeout,
     $ports_file           = $apache::params::ports_file,
     $server_tokens        = 'OS',
     $server_signature     = 'On',
@@ -65,6 +70,23 @@ class apache (
     }
   }
 
+  if $mod_enable_dir and ! defined(File[$mod_enable_dir]) {
+    $mod_load_dir = $mod_enable_dir
+    exec { "mkdir ${mod_enable_dir}":
+      creates => $mod_enable_dir,
+      require => Package['httpd'],
+    }
+    file { $mod_enable_dir:
+      ensure  => directory,
+      recurse => true,
+      purge   => $purge_configs,
+      notify  => Class['Apache::Service'],
+      require => Package['httpd'],
+    }
+  } else {
+    $mod_load_dir = $mod_dir
+  }
+
   if ! defined(File[$vhost_dir]) {
     exec { "mkdir ${vhost_dir}":
       creates => $vhost_dir,
@@ -79,6 +101,24 @@ class apache (
       require => Package['httpd'],
     }
   }
+
+  if $vhost_enable_dir and ! defined(File[$vhost_enable_dir]) {
+    $vhost_load_dir = $vhost_enable_dir
+    exec { "mkdir ${vhost_load_dir}":
+      creates => $vhost_load_dir,
+      require => Package['httpd'],
+    }
+    file { $vhost_enable_dir:
+      ensure  => directory,
+      recurse => true,
+      purge   => $purge_configs,
+      notify  => Class['Apache::Service'],
+      require => Package['httpd'],
+    }
+  } else {
+    $vhost_load_dir = $vhost_dir
+  }
+
 # #############
 # Does not work. Has dependency on puppetlabs/concat but it does not build...
 ##################
