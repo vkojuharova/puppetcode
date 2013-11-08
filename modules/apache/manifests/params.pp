@@ -1,9 +1,9 @@
 class apache::params {
-    $osr_array = split ($:: operatingsystemrelease, '[\/\.]')
-    $distrelease = $osr_array[0]
-    if !$distrelease {
-    fail (" Class['apache::params']: Unparsable \$::operatingsystemrelease:  $ {:: operatingsystemrelease} ")
-    }
+#    $osr_array = split ($:: operatingsystemrelease, '[\/\.]')
+#    $distrelease = $osr_array[0]
+#    if !$distrelease {
+#    fail (" Class['apache::params']: Unparsable \$::operatingsystemrelease:  $ {:: operatingsystemrelease} ")
+#    }
 
     if ($:: fqdn) {
         $servername = $:: fqdn
