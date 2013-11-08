@@ -145,18 +145,7 @@ class apache (
   }
 
 ### Add the following as httpd already exists
-  # This ensures that the docroot exists
-  # But enables it to be specified across multiple vhost resources
-  if ! defined(File[$docroot]) {
-    file { $docroot:
-      ensure  => directory,
-      owner   => 'root',
-      group   => $apache::params::root_group,
-      require => Package['httpd'],
-    }
-  }
 
-  # Same as above, but for logroot
   if ! defined(File[$logroot]) {
     file { $logroot:
       ensure  => directory,
