@@ -10,8 +10,9 @@ class apache::params {
 #    } else {
 #        $servername = $:: hostname
 #    }
-
-    $servername = $hostname
+     notice("Hostname $hostname")
+     notice("Servername $servername")
+#    $servername = $hostname
 
     if $::osfamily == 'RedHat' #or $::operatingsystem == 'amazon'
     {
@@ -53,7 +54,6 @@ class apache::params {
         $default_ssl_cert = '/etc/ssl/certs/ssl-cert-snakeoil.pem'
         $default_ssl_key  = '/etc/ssl/private/ssl-cert-snakeoil.key'
         $ssl_certs_dir    = '/etc/ssl/certs'
-
     } else {
         fail("Class['apache::params']: Unsupported osfamily: ${::osfamily}")
     }
