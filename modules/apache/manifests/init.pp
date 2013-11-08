@@ -68,7 +68,7 @@ class apache (
     exec { "mkdir ${vhost_dir}":
       creates => $vhost_dir,
       require => Package['httpd'],
-    }
+
     file { $vhost_dir:
       ensure  => directory,
       recurse => true,
@@ -77,14 +77,16 @@ class apache (
       require => Package['httpd'],
     }
   }
-
-  concat { $ports_file:
-    owner   => 'root',
-    group   => $apache::params::root_group,
-    mode    => '0644',
-    notify  => Class['Apache::Service'],
-    require => Package['httpd'],
-  }
+# #############
+# Does not work. Has dependency on puppetlabs/concat but it does not build...
+##################
+#  concat { $ports_file:
+#    owner   => 'root',
+#    group   => $apache::params::root_group,
+#    mode    => '0644',
+#    notify  => Class['Apache::Service'],
+#    require => Package['httpd'],
+#  }
 
 #  concat::fragment { 'Apache ports header':
 #    target  => $ports_file,
