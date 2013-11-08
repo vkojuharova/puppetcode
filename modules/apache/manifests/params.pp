@@ -13,7 +13,8 @@ class apache::params {
 
     $servername = $hostname
 
-    if $:: osfamily == 'RedHat' or $:: operatingsystem == 'amazon' {
+    if $::osfamily == 'RedHat' #or $::operatingsystem == 'amazon'
+    {
         $user = 'apache'
         $group = 'apache'
         $root_group = 'root'
