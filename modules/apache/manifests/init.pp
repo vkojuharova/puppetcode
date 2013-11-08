@@ -258,9 +258,9 @@ class apache (
       class { 'apache::default_mods':
         all => $default_mods,
       }
-#    if $mpm_module {
-#      class { "apache::mod::${mpm_module}": }
-#    }
+    if $mpm_module {
+      class { "apache::mod::${mpm_module}": }
+    }
     $default_vhost_ensure = $default_vhost ? {
       true  => 'present',
       false => 'absent'
