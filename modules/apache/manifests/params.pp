@@ -5,11 +5,11 @@ class apache::params {
 #    fail (" Class['apache::params']: Unparsable \$::operatingsystemrelease:  $ {:: operatingsystemrelease} ")
 #    }
 
-#    if ($:: fqdn) {
-#        $servername = $:: fqdn
-#    } else {
-#        $servername = $:: hostname
-#    }
+    if ($::fqdn) {
+        $servername = $::fqdn
+    } else {
+        $servername = $::hostname
+    }
     $servername = $hostname
 
     notice("Hostname $hostname")
@@ -18,7 +18,7 @@ class apache::params {
     notice("operatingsystem $operatingsystem")
     notice("fqdn is $fqdn")
 
-    if $::osfamily == 'RedHat' #or $::operatingsystem == 'amazon'
+    if $::osfamily == 'RedHat' or $::operatingsystem == 'amazon'
     {
         $user = 'apache'
         $group = 'apache'
