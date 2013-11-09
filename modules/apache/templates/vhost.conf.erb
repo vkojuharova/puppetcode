@@ -2,6 +2,12 @@
 # Vhost template in module puppetlabs-apache
 # Managed by Puppet
 # ************************************
+<%# Listen should always be one of:
+  - <port>
+  - <ipv4>:<port>
+  - [<ipv6]:<port>
+-%>
+Listen <%= @listen_addr_port %>
 
 <VirtualHost <%= @nvh_addr_port %>>
   ServerName <%= @servername %>

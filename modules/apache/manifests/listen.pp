@@ -1,13 +1,19 @@
+# Currently not used
 define apache::listen {
   $listen_addr_port = $name
   include apache::params
 
 
-   file { "ports.conf":
-         ensure => present ,
+   file { "$apache::params::ports_file":
+         ensure  => present ,
+         ensure  => file,
          path    => "$apache::params::ports_file",
          content => 'puppet:///modules/apache/listen.erb' ,
+         owner   => "root",
+         group   => "root",
+         mode    => 0644,
          replace => true,
+         once    => true,
          notify  => Class['Apache::Service'],
          require => Package['httpd'],
   }
