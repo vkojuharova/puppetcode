@@ -1,11 +1,14 @@
 define apache::listen {
   $listen_addr_port = $name
-#  include apache::params
+  include apache::params
 
-   file { $apache::params::ports_file:
+   file { "$apache::params::ports_file":
          ensure => file ,
-         content => template('apache/listen.erb')
+         content => template('apache/listen.erb') ,
+         notify  => Class['Apache::Service'],
+         require => Package['httpd'],
        }
+
 
   # Template uses: $listen_addr_port
 #  concat::fragment { "Listen ${listen_addr_port}":
