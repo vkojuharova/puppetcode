@@ -55,6 +55,8 @@ define tomcat::deployment($path) {
 
   include tomcat
   notice("Establishing http://$hostname:${tomcat::tomcat_port}/$name/")
+  notice("Deploying $name to $path")
+
 
   file { "/var/lib/tomcat6/webapps/${name}.war":
     owner => 'root',
