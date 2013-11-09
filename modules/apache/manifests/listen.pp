@@ -2,7 +2,7 @@ define apache::listen {
   $listen_addr_port = $name
   include apache::params
 
-   file { #"ports.conf":
+   file { "listen.conf":
          ensure => file ,
          path    => "$apache::params::ports_file",
          content => template('apache/listen.erb') ,
