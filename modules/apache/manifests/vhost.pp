@@ -138,18 +138,14 @@ define apache::vhost(
   }
   $apache_name = $apache::params::apache_name
 
-  validate_re($ensure, '^(present|absent)$',
-  "${ensure} is not supported for ensure.
-  Allowed values are 'present' and 'absent'.")
-  validate_re($suphp_engine, '^(on|off)$',
-  "${suphp_engine} is not supported for suphp_engine.
-  Allowed values are 'on' and 'off'.")
-  validate_bool($ip_based)
-  validate_bool($access_log)
-  validate_bool($error_log)
-  validate_bool($ssl)
-  validate_bool($default_vhost)
-  validate_bool($sslproxyengine)
+#  validate_re($ensure, '^(present|absent)$', "${ensure} is not supported for ensure. Allowed values are 'present' and 'absent'.")
+#  validate_re($suphp_engine, '^(on|off)$', "${suphp_engine} is not supported for suphp_engine. Allowed values are 'on' and 'off'.")
+#  validate_bool($ip_based)
+#  validate_bool($access_log)
+#  validate_bool($error_log)
+#  validate_bool($ssl)
+#  validate_bool($default_vhost)
+#  validate_bool($sslproxyengine)
   if $wsgi_script_aliases {
     validate_hash($wsgi_script_aliases)
   }
@@ -168,9 +164,9 @@ define apache::vhost(
     fail("Apache::Vhost[${name}]: 'error_log_file' and 'error_log_pipe' cannot be defined at the same time")
   }
 
-  if $fallbackresource {
-    validate_re($fallbackresource, '^/|disabled', 'Please make sure fallbackresource starts with a / (or is "disabled")')
-  }
+#  if $fallbackresource {
+#    validate_re($fallbackresource, '^/|disabled', 'Please make sure fallbackresource starts with a / (or is "disabled")')
+#  }
 
   if $ssl {
     include apache::mod::ssl
