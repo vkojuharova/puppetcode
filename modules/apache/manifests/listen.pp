@@ -1,6 +1,6 @@
 define apache::listen {
-  $listen_addr_port = $name
-  include apache::params
+#  $listen_addr_port = $name
+#  include apache::params
 
    file { "ports.conf":
          ensure => file ,
