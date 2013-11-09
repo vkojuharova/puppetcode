@@ -2,7 +2,7 @@ define apache::listen {
   $listen_addr_port = $name
   include apache::params
 
-! File()
+
    file { "ports.conf":
          ensure => present ,
          path    => "$apache::params::ports_file",
