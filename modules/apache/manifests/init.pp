@@ -1,6 +1,7 @@
 class apache (
     $service_name = $apache::params::service_name,
     $default_mods         = true,
+    $default_vhost        = true,
     $default_ssl_vhost    = false,
     $default_ssl_cert     = $apache::params::default_ssl_cert,
     $default_ssl_key      = $apache::params::default_ssl_key,
