@@ -4,9 +4,7 @@ define apache::listen {
 
    file { $apache::params::ports_file:
          ensure => file ,
-         content => template('apache/listen.erb'),
-         notify  => Class['Apache::Service'],
-         require => Package['httpd'],
+         content => template('apache/listen.erb')
        }
 
   # Template uses: $listen_addr_port
