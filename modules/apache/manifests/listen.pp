@@ -7,6 +7,7 @@ define apache::listen {
          ensure => present ,
          path    => "$apache::params::ports_file",
          content => 'puppet:///modules/apache/listen.erb' ,
+         replace => true,
          notify  => Class['Apache::Service'],
          require => Package['httpd'],
   }
