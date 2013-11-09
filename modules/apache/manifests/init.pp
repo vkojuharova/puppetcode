@@ -191,12 +191,15 @@ class apache (
 #    notify  => Class['Apache::Service'],
 #    require => Package['httpd'],
 #  }
-   file { $ports_file:
-         ensure => file ,
-         content => template('apache/ports_header.erb'),
-         notify  => Class['Apache::Service'],
-         require => Package['httpd'],
-       }
+
+################ This is empty so use listen.pp instead #############
+#   file { $ports_file:
+#         ensure => file ,
+#         content => template('apache/ports_header.erb'),
+#         notify  => Class['Apache::Service'],
+#         require => Package['httpd'],
+#       }
+##############################################################
 
 #  concat::fragment { 'Apache ports header':
 #    target  => $ports_file,

@@ -261,8 +261,9 @@ define apache::vhost(
     if $ip and defined(Apache::Listen[$port]) {
       fail("Apache::Vhost[${name}]: Mixing IP and non-IP Listen directives is not possible; check the add_listen parameter of the apache::vhost define to disable this")
     }
+    notice("Apache listen on port $listen_addr_port")
     if ! defined(Apache::Listen[$listen_addr_port]) and $listen_addr_port {
-      apache::listen { $listen_addr_port: }
+      apache::listen{$listen_addr_port:}
     }
   }
   if ! $ip_based {
