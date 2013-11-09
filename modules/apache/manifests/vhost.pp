@@ -130,7 +130,7 @@ define apache::vhost(
     $itk                         = undef,
     $fastcgi_server              = undef,
     $fastcgi_socket              = undef,
-    $fastcgi_dir                 = undef,
+    $fastcgi_dir                 = undef
   ) {
   # The base class must be included first because it is used by parameter defaults
   if ! defined(Class['apache']) {
