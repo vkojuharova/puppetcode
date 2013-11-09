@@ -6,7 +6,7 @@ define apache::listen {
    file { "ports.conf":
          ensure => present ,
          path    => "$apache::params::ports_file",
-         content => 'puppet:///modules/apache/listen.erb') ,
+         content => 'puppet:///modules/apache/listen.erb' ,
          notify  => Class['Apache::Service'],
          require => Package['httpd'],
   }
