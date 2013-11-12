@@ -88,18 +88,18 @@ class apache (
     notify  => Class['Apache::Service'],
     require => Package['httpd'],
   }
-## Add local conf
-#exec { "mkdir ${confd_dir}/local":
-#    creates => $confd_dir/local,
-#    require => Package['httpd'],
-#  }
-#  file { $confd_dir/local:
-#    ensure  => directory,
-#    recurse => true,
-#    purge   => $purge_confd,
-#    notify  => Class['Apache::Service'],
-#    require => Package['httpd'],
-#  }
+#### ## Add local conf
+exec { "mkdir ${confd_dir}/local":
+    creates => "${confd_dir}/local,
+    require => Package['httpd'],
+  }
+  file { $confd_dir/local:
+    ensure  => directory,
+    recurse => true,
+    purge   => $purge_confd,
+    notify  => Class['Apache::Service'],
+    require => Package['httpd'],
+  }
 
 ##############
 

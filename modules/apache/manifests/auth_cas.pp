@@ -1,5 +1,5 @@
-class apache::mod::auth_cas {
-    apache::mod { 'auth_cas': }
+class apache::auth_cas {
+    apache { 'auth_cas': }
 
 #Mod Auth CAS cache folder
     file { '/mod_auth_cas':
@@ -10,7 +10,7 @@ class apache::mod::auth_cas {
 
     file {  'auth_cas':
         ensure    => file,
-        path      => "${$mod_dir}/auth_cas.conf",
+        path      => "${mod_dir}/auth_cas.conf",
         content   => template ('apache/mod/auth_cas.conf.erb'),
         require   => Exec["mkdir ${apache::mod_dir}"],
         before    => File [$apache::mod_dir],
@@ -19,7 +19,8 @@ class apache::mod::auth_cas {
     }
     file {'mod_auth_cas.so':
         ensure  => file,
-        path    => "/etc/httpd/modules/mod_auth_cas.so",
+        path => "${confd_dir}/mod_auth_cas.so",
+        #path    => "/etc/httpd/modules/mod_auth_cas.so",
         source  => 'puppet:///modules/apache/mod_auth_cas.so',
         group   => 'root',
         owner   => 'root',
