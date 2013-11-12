@@ -1,7 +1,7 @@
-class apache::mod::mod_auth_cas {
-    apache::mod { 'mod_auth_cas': }
+class apache::mod::auth_cas {
+    apache::mod { 'auth_cas': }
 
-    file { '/mod_auth_cas':
+    file { 'auth_cas':
         ensure  => directory,
         owner   => 'root',
         group   => 'root',

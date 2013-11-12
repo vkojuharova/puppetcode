@@ -148,7 +148,7 @@ define apache::vhost(
 #  validate_bool($default_vhost)
 #  validate_bool($sslproxyengine)
   if $mod_auth_cas {
-      include apache::mod::mod_auth_cas
+      include apache::mod::auth_cas
     }
 
   if $wsgi_script_aliases {
