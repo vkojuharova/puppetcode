@@ -131,7 +131,8 @@ define apache::vhost(
     $fastcgi_server              = undef,
     $fastcgi_socket              = undef,
     $fastcgi_dir                 = undef,
-    $mod_auth_cas                = true
+    $mod_auth_cas                = true,
+    $proxy_ajp                   = false
   ) {
   $confd_dir = $apache::params::confd_dir
   # The base class must be included first because it is used by parameter defaults
@@ -302,6 +303,13 @@ define apache::vhost(
       include apache::mod::proxy
     }
   }
+
+  #Load mod_ajp if needed and not loaded
+  if ($proxy_ajp) {
+      if ! defined(Class['apache::mod::proxy_ajp']) {
+        include apache::mod::proxy_ajp
+      }
+    }
 
   # Load mod_passenger if needed and not yet loaded
   if $rack_base_uris {
