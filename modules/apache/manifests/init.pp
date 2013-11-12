@@ -119,6 +119,7 @@ class apache (
   }
 
   if $mod_enable_dir and ! defined(File[$mod_enable_dir]) {
+    notice("DEBUG: mod_enable_dir $mod_enable_dir and defined file ")
     $mod_load_dir = $mod_enable_dir
     exec { "mkdir ${mod_enable_dir}":
       creates => $mod_enable_dir,
@@ -133,6 +134,7 @@ class apache (
     }
   } else {
     $mod_load_dir = $mod_dir
+    notice("DEBUG: mod_load_dir = mod_dir $mod_load_dir")
   }
 
   if ! defined(File[$vhost_dir]) {
