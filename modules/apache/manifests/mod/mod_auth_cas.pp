@@ -7,13 +7,6 @@ class apache::mod::mod_auth_cas {
         group   => 'root',
     }
 
-    file { '/etc/httpd/certs/aws.cer':
-          ensure    => file ,
-          owner   => 'root',
-          group   => 'root',
-          mode    => '0644',
-      }
-
     file {  'auth_cas_module':
         ensure    => file,
         path      => "${$mod_dir}/auth_cas.conf",
