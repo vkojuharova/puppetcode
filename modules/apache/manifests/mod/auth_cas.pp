@@ -1,7 +1,8 @@
 class apache::mod::auth_cas {
     apache::mod { 'auth_cas': }
 
-    file { 'auth_cas':
+#Mod Auth CAS cache folder
+    file { '/mod_auth_cas':
         ensure  => directory,
         owner   => 'root',
         group   => 'root',
