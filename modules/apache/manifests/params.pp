@@ -63,10 +63,9 @@ class apache::params {
             $mod_libs             = {
               'php5' => 'libphp5.so',
             }
-
-        $keepalive            = 'Off',
-        $keepalive_timeout    = 15,
-        $fastcgi_lib_path     = undef ,
+        $keepalive            = 'Off'
+        $keepalive_timeout    = 15
+        $fastcgi_lib_path     = undef
         $ auth_cas_apache_port = 80
     }  elsif $::osfamily == 'Debian' {
         $user             = 'www-data'
@@ -108,7 +107,7 @@ class apache::params {
             }
             $keepalive         = 'Off'
             $keepalive_timeout = 15
-            $fastcgi_lib_path  = '/var/lib/apache2/fastcgi' ,
+            $fastcgi_lib_path  = '/var/lib/apache2/fastcgi'
             $ auth_cas_apache_port = 80
     } else {
         fail("Class['apache::params']: Unsupported osfamily: ${::osfamily}")
