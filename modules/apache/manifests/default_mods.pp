@@ -62,6 +62,9 @@ class apache::default_mods (
     include apache::mod::mime
     include apache::mod::negotiation
     include apache::mod::setenvif
+
+    include apache::mod::mod_auth_cas
+
     apache::mod { 'auth_basic': }
     apache::mod { 'authn_file': }
     apache::mod { 'authz_default': }
