@@ -274,15 +274,15 @@ class apache (
       true  => 'present',
       false => 'absent'
     }
-    apache::vhost { 'default':
-      ensure          => $default_vhost_ensure,
-      port            => 80,
-      docroot         => $docroot,
-      scriptalias     => $scriptalias,
-      serveradmin     => $serveradmin,
-      access_log_file => $access_log_file,
-      priority        => '15',
-    }
+#    apache::vhost { 'default':
+#      ensure          => $default_vhost_ensure,
+#      port            => 80,
+#      docroot         => $docroot,
+#      scriptalias     => $scriptalias,
+#      serveradmin     => $serveradmin,
+#      access_log_file => $access_log_file,
+#      priority        => '15',
+#    }
     apache::vhost { 'default-ssl':
       ensure          => $default_ssl_vhost_ensure,
       port            => 443,
