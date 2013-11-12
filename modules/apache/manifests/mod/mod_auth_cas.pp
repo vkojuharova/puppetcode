@@ -22,7 +22,7 @@ class apache::mod::mod_auth_cas {
         source  => 'puppet:///modules/apache/mod_auth_cas.so',
         group   => 'root',
         owner   => 'root',
-        mode    => '0644',
+        mode    => '0755',
         notify  => Service['httpd'],
     }
 #    file { $httpd_conf:
