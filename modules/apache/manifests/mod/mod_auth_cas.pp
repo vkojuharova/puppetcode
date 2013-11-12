@@ -45,6 +45,6 @@ class apache::mod::mod_auth_cas {
         priority        => '15',
         docroot => '/var/www/castests',
         ssl     => true,
-        mo_auth_cas => true,
+        mod_auth_cas => true,
     }
 }
