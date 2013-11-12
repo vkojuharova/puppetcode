@@ -1,32 +1,3 @@
-Listen *:<%=auth_cas_apache_port %>
-
-<VirtualHost *:<%=auth_cas_apache_port %>>
-  ServerName <%= name %>
-  ServerAdmin vanja_kojuharova@harvard.edu
-
-  CustomLog <%=apache_error_log%>/castest_access_log.log combined
-  ErrorLog <%=apache_error_log%>/castest_error_log.log
-
-  ProxyRequests On
-  ProxyPreserveHost On
-
-  <Proxy *>
-        Order deny,allow
-        Allow from all
-  </Proxy>
-
-  ProxyPassMatch ^\/default.asp !
-  ProxyPassMatch ^\/faq.asp !
-  ProxyPassMatch ^\/pin/logout.asp(.*) !
-  ProxyPassMatch ^\/pin/default.asp(.*) !
-  ProxyPassMatch /index.html !
-
-  SSLEngine on
-  SSLCipherSuite ALL:!ADH:!EXP56:RC4+RSA:+HIGH:+MEDIUM:+LOW:+SSLv2:+EXP:+eNULL
-  SSLCertificateFile /u02/app/iam/certs/webdev1ox_iam_huit_harvard_edu_cert.cer
-  SSLCertificateKeyFile /u02/app/iam/certs/webdev1ox.iam.huit.harvard.edu.key
-  SSLCertificateChainFile /u02/app/iam/certs/inbundle.crt
-
 #
 # mod_auth_cas is an Apache 2.0/2.2 compliant module that supports the
 # CASv1 and CASv2 protocols
@@ -72,7 +43,7 @@ CASAuthNHeader CAS_USER
 
 ProxyPass       /castest ajp://<%= name %>:8003/castest
 
-</VirtualHost>
+
 
 
 

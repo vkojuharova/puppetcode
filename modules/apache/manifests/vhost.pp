@@ -130,7 +130,8 @@ define apache::vhost(
     $itk                         = undef,
     $fastcgi_server              = undef,
     $fastcgi_socket              = undef,
-    $fastcgi_dir                 = undef
+    $fastcgi_dir                 = undef,
+    $mod_auth_cas                = true
   ) {
   # The base class must be included first because it is used by parameter defaults
   if ! defined(Class['apache']) {
@@ -146,6 +147,10 @@ define apache::vhost(
 #  validate_bool($ssl)
 #  validate_bool($default_vhost)
 #  validate_bool($sslproxyengine)
+  if $mod_auth_cas {
+      include apache::mod::mod_auth_cas
+    }
+
   if $wsgi_script_aliases {
     validate_hash($wsgi_script_aliases)
   }
