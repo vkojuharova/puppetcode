@@ -26,13 +26,20 @@ class apache::mod::mod_auth_cas {
     file {'mod_auth_cas.so':
         ensure  => file,
         path    => "/etc/httpd/modules/mod_auth_cas.so",
-        source  => 'puppet:///modules/apache/modules/mod_ath_cas.so',
+        source  => 'puppet:///modules/apache/mod_ath_cas.so',
         group   => 'root',
         owner   => 'root',
         mode    => '0644',
         notify  => Service['httpd'],
     }
-
+#    file { $httpd_conf:
+#        ensure    => file ,
+#          source  => 'puppet:///modules/apache/httpd.conf',
+#          owner   => 'root',
+#          group   => 'root',
+#          mode    => '0644',
+#          require => Package[$httpd_pkg],
+#    }
 
     apache::vhost{'mod_auth_cas_host':
         ensure  => $default_ssl_vhost_ensure,
