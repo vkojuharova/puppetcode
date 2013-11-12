@@ -62,6 +62,7 @@ class apache::params {
             }
             $mod_libs             = {
               'php5' => 'libphp5.so',
+              'auth_cas_module' => 'mod_auth_cas.so',
             }
         $keepalive            = 'Off'
         $keepalive_timeout    = 15
@@ -104,6 +105,7 @@ class apache::params {
             }
             $mod_libs         = {
               'php5' => 'libphp5.so',
+              'auth_cas_module' => 'mod_auth_cas.so',
             }
             $keepalive         = 'Off'
             $keepalive_timeout = 15
