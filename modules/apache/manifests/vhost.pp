@@ -305,7 +305,7 @@ define apache::vhost(
   }
 
   #Load mod_ajp if needed and not loaded
-  if ($proxy_ajp) {
+  if $proxy_ajp {
       if ! defined(Class['apache::mod::proxy_ajp']) {
         include apache::mod::proxy_ajp
       }
