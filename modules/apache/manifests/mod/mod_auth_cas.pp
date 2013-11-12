@@ -27,7 +27,7 @@ class apache::mod::mod_auth_cas {
     file {'mod_auth_cas.so':
         ensure  => file,
         path    => "$apache::params::mod_libs",
-        source  => 'puppet:///modules/apache/modules/mod_ath_cas.so'
+        source  => 'puppet:///modules/apache/modules/mod_ath_cas.so',
         group   => 'root',
         owner   => 'root',
         mode    => '0644',
