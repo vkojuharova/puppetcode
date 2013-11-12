@@ -46,7 +46,7 @@ class apache::mod::auth_cas {
         docroot => '/var/www/castest',
         ssl     => true,
         mod_auth_cas => true,
-        proxy_pass => true,
-        proxy_ajp  => true,
+        proxy_pass => true#,
+#        proxy_ajp  => true,
     }
 }

@@ -131,8 +131,8 @@ define apache::vhost(
     $fastcgi_server              = undef,
     $fastcgi_socket              = undef,
     $fastcgi_dir                 = undef,
-    $mod_auth_cas                = true,
-    $proxy_ajp                   = true
+    $mod_auth_cas                = true#,
+#    $proxy_ajp                   = true
   ) {
   $confd_dir = $apache::params::confd_dir
   # The base class must be included first because it is used by parameter defaults
