@@ -3,7 +3,6 @@ class apache::mod::mod_auth_cas {
 
     file { '/mod_auth_cas':
         ensure  => directory,
-        ensure  => present,
         owner   => 'root',
         group   => 'root',
     }
