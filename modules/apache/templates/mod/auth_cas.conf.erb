@@ -7,7 +7,7 @@ LoadModule auth_cas_module modules/mod_auth_cas.so
 
 
 CASCookiePath       /mod_auth_cas/
-CASCertificatePath  /etc/httpd/certs/aws.cer
+CASCertificatePath  /etc/pki/tls/certs/localhost.crt
 
 CASLoginURL         https://stage.pin1.harvard.edu/cas/login
 CASValidateURL      https://stage.pin1.harvard.edu/cas/samlValidate
