@@ -58,6 +58,6 @@ Listen <%= @listen_addr_port %>
 
 <% if @mod_auth_cas -%>
 <%= @listen_addr_port %>
-Include <%= @$confd_dir%>/auth_cas.conf
+Include <%= @confd_dir%>/auth_cas.conf
 <% end -%>
 </VirtualHost>
