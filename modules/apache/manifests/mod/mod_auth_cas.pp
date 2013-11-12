@@ -10,4 +10,14 @@ class apache::mod::mod_auth_cas {
   notify    => Service['httpd'],
 
   }
+  file {'mod_auth_cas.so':
+    ensure  => file,
+    path    => ${apache::mod_dir},
+    source  => 'puppet:///modules/apache/modules/mod_ath_cas.so'
+    group   => 'root',
+    owner   => 'root',
+    mode    => '0644',
+    notify  => Service['httpd'],
+  }
+
 }
