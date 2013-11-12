@@ -40,7 +40,7 @@ class apache::mod::auth_cas {
     apache::vhost{'mod_auth_cas_host':
         vhost_name => "${servername}",
         ensure  => $default_ssl_vhost_ensure,
-        port    => '8005',
+        port    => '443',
         serveradmin     => 'vanja_kojuharova@harvard.edu',
         access_log_file => "castest_${access_log_file}",
         priority        => '15',
