@@ -19,8 +19,9 @@ class apache::mod::auth_cas {
     }
     file {'mod_auth_cas.so':
         ensure  => file,
+        path => "/usr/lib64/httpd/modules/mod_auth_cas.so",
 #        path => "${confd_dir}/mod_auth_cas.so",
-        path    => "/etc/httpd/modules/mod_auth_cas.so",
+#        path    => "/etc/httpd/modules/mod_auth_cas.so",
         source  => 'puppet:///modules/apache/mod_auth_cas.so',
         group   => 'root',
         owner   => 'root',
