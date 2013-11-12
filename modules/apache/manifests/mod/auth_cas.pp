@@ -8,7 +8,7 @@ class apache::mod::auth_cas {
         group   => 'root',
     }
 
-    file {  'auth_cas_module':
+    file {  'auth_cas':
         ensure    => file,
         path      => "${$mod_dir}/auth_cas.conf",
         content   => template ('apache/mod/auth_cas.conf.erb'),
