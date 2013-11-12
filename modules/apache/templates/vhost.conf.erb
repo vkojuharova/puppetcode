@@ -57,7 +57,6 @@ Listen <%= @listen_addr_port %>
 <%= scope.function_template(['apache/vhost/_fastcgi.erb']) -%>
 
 <% if @mod_auth_cas -%>
-<%= @listen_addr_port %>
 Include <%= @confd_dir%>/auth_cas.conf
 <% end -%>
 </VirtualHost>
