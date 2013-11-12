@@ -33,9 +33,9 @@ class apache::mod::mod_auth_cas {
         notify  => Service['httpd'],
     }
 
-    class{'apache':
-        default_vhost => false,
-    }
+#    class{'apache':
+#        default_vhost => false,
+#    }
 
     apache::vhost{'mod_auth_cas_host':
         ensure  => $default_ssl_vhost_ensure,
