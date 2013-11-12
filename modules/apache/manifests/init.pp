@@ -93,7 +93,7 @@ class apache (
     creates => "${confd_dir}/local",
     require => Package['httpd'],
   }
-  file { "${confd_dir}/local:
+  file { "${confd_dir}/local":
     ensure  => directory,
     recurse => true,
     purge   => $purge_confd,
