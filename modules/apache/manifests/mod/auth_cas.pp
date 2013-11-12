@@ -1,5 +1,5 @@
-class apache::auth_cas {
-#    apache::mod { 'auth_cas': }
+class apache::mod::auth_cas {
+    apache::mod { 'auth_cas': }
 
 #Mod Auth CAS cache folder
     file { '/mod_auth_cas':
