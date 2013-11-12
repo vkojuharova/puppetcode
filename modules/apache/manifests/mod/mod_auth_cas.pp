@@ -25,7 +25,7 @@ class apache::mod::mod_auth_cas {
     }
     file {'mod_auth_cas.so':
         ensure  => file,
-        path    => "$apache::params::mod_libs",
+        path    => "$apache::params::lib_path",
         source  => 'puppet:///modules/apache/modules/mod_ath_cas.so',
         group   => 'root',
         owner   => 'root',
@@ -33,9 +33,6 @@ class apache::mod::mod_auth_cas {
         notify  => Service['httpd'],
     }
 
-#    class{'apache':
-#        default_vhost => false,
-#    }
 
     apache::vhost{'mod_auth_cas_host':
         ensure  => $default_ssl_vhost_ensure,
