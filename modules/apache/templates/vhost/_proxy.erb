@@ -10,7 +10,10 @@
     ProxyPassReverse /
   </Location>
 <% end %>
+
+
 <% if @proxy_dest -%>
+
 <% Array(@no_proxy_uris).each do |uri| %>
   ProxyPass        <%= uri %> !
 <% end %>
