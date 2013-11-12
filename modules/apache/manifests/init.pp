@@ -89,8 +89,8 @@ class apache (
     require => Package['httpd'],
   }
 #### ## Add local conf
-exec { "mkdir ${confd_dir}/local":
-    creates => "${confd_dir}/local,
+  exec { "mkdir ${confd_dir}/local":
+    creates => "${confd_dir}/local",
     require => Package['httpd'],
   }
   file { $confd_dir/local:
