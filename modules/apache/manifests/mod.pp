@@ -15,9 +15,7 @@ define apache::mod (
   # Determine if we have special lib
   $mod_libs = $apache::params::mod_libs
 
-  notice("mod_lib $mod_libs")
-
-  notice ("mod $mod")
+  notice("mod_lib $mod_libs and lib is $lib")
 
   notice("mod_lib $mod_libs[$mod]")
 
@@ -29,6 +27,8 @@ define apache::mod (
   } else {
     $lib_REAL = "mod_${mod}.so"
   }
+
+notice ("lib_REAL is $lib_REAL")
 
   # Determine if we have a package
   $mod_packages = $apache::params::mod_packages
