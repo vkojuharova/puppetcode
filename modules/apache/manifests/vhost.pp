@@ -133,6 +133,7 @@ define apache::vhost(
     $fastcgi_dir                 = undef,
     $mod_auth_cas                = true
   ) {
+  $confd_dir = $apache::params::confd_dir
   # The base class must be included first because it is used by parameter defaults
   if ! defined(Class['apache']) {
     fail('You must include the apache base class before using any apache defined resources')
