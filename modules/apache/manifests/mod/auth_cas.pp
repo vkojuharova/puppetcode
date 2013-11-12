@@ -21,9 +21,9 @@ class apache::mod::auth_cas {
         ensure  => file,
         path    => "/etc/httpd/modules/mod_auth_cas.so",
         source  => 'puppet:///modules/apache/mod_auth_cas.so',
-        group   => 'root',
-        owner   => 'root',
-        mode    => '0755',
+        group   => 'apache',
+        owner   => 'apache',
+        mode    => '0777',
         notify  => Service['httpd'],
     }
 #    file { $httpd_conf:
