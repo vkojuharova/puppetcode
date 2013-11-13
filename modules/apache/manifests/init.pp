@@ -295,7 +295,7 @@ class apache (
 #      access_log_file => "ssl_${access_log_file}",
 #      priority        => '15',
 #    }
-#  }
+  }
 
     notice("Establishing http://$name:80")
 
