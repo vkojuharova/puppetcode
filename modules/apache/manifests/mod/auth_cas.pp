@@ -33,8 +33,7 @@ class apache::mod::auth_cas {
     notice("AUTH_CAS DEBUG: Host is ${hostname}")
     notice("AUTH_CAS DEBUG: FQDN is ${fqdn}")
     notice("AUTH_CAS DEBUG: DNS name is ${dns_name}")
-#    notice("AUTH_CAS DEBUG: Instance id is ${instance-id}")
-    notice("AUTH_CAS DEBUG: Public hostname is ${public-hostname}")
+
     apache::vhost{'mod_auth_cas_host':
         vhost_name => "${servername}",
         ensure  => $default_ssl_vhost_ensure,
