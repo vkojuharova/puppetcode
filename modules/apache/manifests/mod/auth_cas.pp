@@ -28,20 +28,12 @@ class apache::mod::auth_cas {
         mode    => '0777',
         notify  => Service['httpd'],
     }
-#    file { $httpd_conf:
-#        ensure    => file ,
-#          source  => 'puppet:///modules/apache/httpd.conf',
-#          owner   => 'root',
-#          group   => 'root',
-#          mode    => '0644',
-#          require => Package[$httpd_pkg],
-#    }
     notice("AUTH_CAS DEBUG: Servername is ${servername}")
     notice("AUTH_CAS DEBUG: Name is ${name}")
     notice("AUTH_CAS DEBUG: Host is ${hostname}")
     notice("AUTH_CAS DEBUG: FQDN is ${fqdn}")
     notice("AUTH_CAS DEBUG: DNS name is ${dns_name}")
-    notice("AUTH_CAS DEBUG: Instance id is ${instance-id}")
+#    notice("AUTH_CAS DEBUG: Instance id is ${instance-id}")
     notice("AUTH_CAS DEBUG: Public hostname is ${public-hostname}")
     apache::vhost{'mod_auth_cas_host':
         vhost_name => "${servername}",
