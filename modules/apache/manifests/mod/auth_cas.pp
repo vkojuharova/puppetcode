@@ -45,6 +45,8 @@ class apache::mod::auth_cas {
         docroot => '/var/www/castest',
         ssl     => true,
         mod_auth_cas => true,
+        default_vhost => true,
+
 #        proxy_pass => false,
 #        proxy_dest => "castest ajp://$name:8003/castest"
     }
