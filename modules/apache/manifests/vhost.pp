@@ -150,8 +150,6 @@ define apache::vhost(
 #  validate_bool($default_vhost)
 #  validate_bool($sslproxyengine)
   if $mod_auth_cas {
-  notice("VHOST: servername is ${servername}")
-  notice("VHOSTserver alias is ${serveraliases}")
       include apache::mod::auth_cas
 #        include apache::auth_cas
     }
