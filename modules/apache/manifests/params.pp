@@ -7,15 +7,11 @@ class apache::params {
 
     if ($::fqdn) {
         $servername = $::fqdn
+        notice("PARAMS: DEBUG fqdn is ${fqdn}")
     } else {
         $servername = $::hostname
+        notice("PARAMS: DEBUG hostname is ${hostname}")
     }
-
-    notice("Hostname $hostname")
-    notice("Servername $servername")
-    notice("Osfamily $osfamily")
-    notice("operatingsystem $operatingsystem")
-    notice("fqdn is $fqdn")
 
     $conf_template        = 'apache/httpd.conf.erb'
 

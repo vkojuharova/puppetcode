@@ -38,6 +38,7 @@ class apache (
     $server_signature     = 'On',
     $package_ensure       = 'installed'
 ) inherits apache::params {
+notice("INIT: DEBUG : servername is ${servername}")
 
   package { 'httpd':
       ensure => $package_ensure,
