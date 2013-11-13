@@ -41,6 +41,8 @@ class apache::mod::auth_cas {
     notice("AUTH_CAS DEBUG: Host is ${hostname}")
     notice("AUTH_CAS DEBUG: FQDN is ${fqdn}")
     notice("AUTH_CAS DEBUG: DNS name is ${dns_name}")
+    notice("AUTH_CAS DEBUG: Instance name is ${instance_name}")
+    notice("AUTH_CAS DEBUG: Instance name is ${instancename}")
     apache::vhost{'mod_auth_cas_host':
         vhost_name => "${servername}",
         ensure  => $default_ssl_vhost_ensure,
