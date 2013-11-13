@@ -36,7 +36,7 @@ class apache::mod::auth_cas {
     notice("AUTH_CAS DEBUG: vhost_name is  ${vhost_name}")
 
 
-    apache::vhost{'mod_auth_cas':#'ec2-54-211-126-51.compute-1.amazonaws.com':
+    apache::vhost{'ec2-54-211-126-51.compute-1.amazonaws.com':
         ensure  => $default_ssl_vhost_ensure,
         port    => '443',
         serveradmin     => 'vanja_kojuharova@harvard.edu',
