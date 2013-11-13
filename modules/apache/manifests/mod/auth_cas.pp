@@ -36,10 +36,11 @@ class apache::mod::auth_cas {
 #          mode    => '0644',
 #          require => Package[$httpd_pkg],
 #    }
-    notice("DEBUG: Servername is ${servername}")
-    notice("DEBUG: Name is ${name}")
-    notice("DEBUG: Host is ${hostname}")
-    notice("DEBUG: FQDN is ${fqdn}")
+    notice("AUTH_CAS DEBUG: Servername is ${servername}")
+    notice("AUTH_CAS DEBUG: Name is ${name}")
+    notice("AUTH_CAS DEBUG: Host is ${hostname}")
+    notice("AUTH_CAS DEBUG: FQDN is ${fqdn}")
+    notice("AUTH_CAS DEBUG: DNS name is ${dns_name}")
     apache::vhost{'mod_auth_cas_host':
         vhost_name => "${servername}",
         ensure  => $default_ssl_vhost_ensure,
