@@ -34,7 +34,6 @@ class apache::mod::auth_cas {
     notice("AUTH_CAS DEBUG: FQDN is ${fqdn}")
 
     apache::vhost{'mod_auth_cas_host':
-        vhost_name => "${servername}",
         ensure  => $default_ssl_vhost_ensure,
         port    => '443',
         serveradmin     => 'vanja_kojuharova@harvard.edu',
