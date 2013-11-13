@@ -37,7 +37,7 @@ class apache::mod::auth_cas {
 #          require => Package[$httpd_pkg],
 #    }
 
-    apache::vhost{'mod_auth_cas_host':
+    apache::vhost{"${servername}":
         vhost_name => "${servername}",
         ensure  => $default_ssl_vhost_ensure,
         port    => '443',

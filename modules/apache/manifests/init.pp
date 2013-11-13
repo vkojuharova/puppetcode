@@ -285,16 +285,16 @@ class apache (
 #      access_log_file => $access_log_file,
 #      priority        => '15',
 #    }
-    apache::vhost { 'default-ssl':
-      ensure          => $default_ssl_vhost_ensure,
-      port            => 443,
-      ssl             => true,
-      docroot         => $docroot,
-      scriptalias     => $scriptalias,
-      serveradmin     => $serveradmin,
-      access_log_file => "ssl_${access_log_file}",
-      priority        => '15',
-    }
+#    apache::vhost { 'default-ssl':
+#      ensure          => $default_ssl_vhost_ensure,
+#      port            => 443,
+#      ssl             => true,
+#      docroot         => $docroot,
+#      scriptalias     => $scriptalias,
+#      serveradmin     => $serveradmin,
+#      access_log_file => "ssl_${access_log_file}",
+#      priority        => '15',
+#    }
   }
 
     notice("Establishing http://$name:80")
