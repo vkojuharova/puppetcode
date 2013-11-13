@@ -140,7 +140,8 @@ define apache::vhost(
     fail('You must include the apache base class before using any apache defined resources')
   }
   $apache_name = $apache::params::apache_name
-
+  notice("VHOST: DEBUG: servername is ${servername}")
+  notice("VHOST: DEBUG: name is ${name}")
 #  validate_re($ensure, '^(present|absent)$', "${ensure} is not supported for ensure. Allowed values are 'present' and 'absent'.")
 #  validate_re($suphp_engine, '^(on|off)$', "${suphp_engine} is not supported for suphp_engine. Allowed values are 'on' and 'off'.")
 #  validate_bool($ip_based)
