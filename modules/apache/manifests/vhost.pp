@@ -276,11 +276,11 @@ define apache::vhost(
 #  }
 
 # ############ I combined all in listen.pp #########
-  if ! $ip_based {
-    if ! defined(Apache::Namevirtualhost[$nvh_addr_port]) {
-      apache::namevirtualhost { $nvh_addr_port: }
-    }
-  }
+#  if ! $ip_based {
+#    if ! defined(Apache::Namevirtualhost[$nvh_addr_port]) {
+#      apache::namevirtualhost { $nvh_addr_port: }
+#    }
+#  }
 ####################################################
 
   # Load mod_rewrite if needed and not yet loaded
