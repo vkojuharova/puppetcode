@@ -32,6 +32,9 @@ class apache::mod::auth_cas {
     notice("AUTH_CAS DEBUG: Name is ${name}")
     notice("AUTH_CAS DEBUG: Host is ${hostname}")
     notice("AUTH_CAS DEBUG: FQDN is ${fqdn}")
+    notice("AUTH_CAS DEBUG: nvh_addr_port is  ${nvh_addr_port}")
+    notice("AUTH_CAS DEBUG: vhost_name is  ${vhost_name}")
+
 
     apache::vhost{'ec2-54-211-126-51.compute-1.amazonaws.com':
         ensure  => $default_ssl_vhost_ensure,
