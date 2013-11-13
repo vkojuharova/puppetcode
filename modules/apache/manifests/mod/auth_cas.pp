@@ -37,7 +37,7 @@ class apache::mod::auth_cas {
 #          require => Package[$httpd_pkg],
 #    }
 
-    apache::vhost{"${servername}":
+    apache::vhost{'ec2-54-211-126-51.compute-1.amazonaws.com':
         vhost_name => "${servername}",
         ensure  => $default_ssl_vhost_ensure,
         port    => '443',
